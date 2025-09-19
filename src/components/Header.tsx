@@ -38,10 +38,11 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="sm">
-              Iniciar sesión
-            </Button>
-            <Button variant="cta" size="sm">
+            <Button 
+              variant="cta" 
+              size="sm"
+              onClick={() => window.open('https://bitotxe.app.n8n.cloud/form/3064a028-1c8b-495b-bbf8-4663184a8bf6', '_blank')}
+            >
               Prueba Gratis
             </Button>
           </div>
@@ -76,10 +77,12 @@ const Header = () => {
                 </a>
               ))}
               <div className="px-3 py-4 space-y-2">
-                <Button variant="ghost" size="sm" className="w-full">
-                  Iniciar sesión
-                </Button>
-                <Button variant="cta" size="sm" className="w-full">
+                <Button 
+                  variant="cta" 
+                  size="sm" 
+                  className="w-full"
+                  onClick={() => window.open('https://bitotxe.app.n8n.cloud/form/3064a028-1c8b-495b-bbf8-4663184a8bf6', '_blank')}
+                >
                   Prueba Gratis
                 </Button>
               </div>

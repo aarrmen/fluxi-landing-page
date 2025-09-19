@@ -17,7 +17,12 @@ const FinalCtaSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button variant="cta" size="xl" className="min-w-[250px] group">
+            <Button 
+              variant="cta" 
+              size="xl" 
+              className="min-w-[250px] group"
+              onClick={() => window.open('https://bitotxe.app.n8n.cloud/form/3064a028-1c8b-495b-bbf8-4663184a8bf6', '_blank')}
+            >
               Probar Fluxi Gratis
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>

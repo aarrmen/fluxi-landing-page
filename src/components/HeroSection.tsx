@@ -27,11 +27,13 @@ const HeroSection = () => {
               </h2>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button variant="cta" size="xl" className="min-w-[200px]">
+                <Button 
+                  variant="cta" 
+                  size="xl" 
+                  className="min-w-[200px]"
+                  onClick={() => window.open('https://bitotxe.app.n8n.cloud/form/3064a028-1c8b-495b-bbf8-4663184a8bf6', '_blank')}
+                >
                   Prueba Fluxi Gratis
-                </Button>
-                <Button variant="outline" size="xl" className="min-w-[160px]">
-                  Ver Demo
                 </Button>
               </div>
             </div>
