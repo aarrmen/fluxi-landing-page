@@ -23,18 +23,13 @@ serve(async (req) => {
       );
     }
 
-    const supabase = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-    );
-
     const body = await req.json();
-    const { name, email, company, phone, business_type, message } = body;
+    const { name, email, phone, message } = body;
 
     // Validate required fields
-    if (!name || !email) {
+    if (!name || !email || !phone) {
       return new Response(
-        JSON.stringify({ error: 'Name and email are required' }),
+        JSON.stringify({ error: 'Name, email and phone are required' }),
         { 
           status: 400, 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
@@ -42,24 +37,27 @@ serve(async (req) => {
       );
     }
 
-    // Insert into database
-    const { data, error } = await supabase
-      .from('surveys')
-      .insert({
-        name,
-        email,
-        company: company || null,
-        phone: phone || null,
-        business_type: business_type || null,
-        message: message || null,
-      })
-      .select()
-      .single();
+    // Prepare data for n8n webhook with Spanish field names
+    const webhookData = {
+      "Nombre": name,
+      "Correo electronico": email,
+      "Numero de telefono": phone,
+      "Comentario": message || ""
+    };
 
-    if (error) {
-      console.error('Database error:', error);
+    // Send to n8n webhook
+    const webhookResponse = await fetch('https://bitotxe.app.n8n.cloud/webhook/60855d6d-7981-41c5-bc9d-ed0e6819b2c9', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(webhookData)
+    });
+
+    if (!webhookResponse.ok) {
+      console.error('Webhook error:', await webhookResponse.text());
       return new Response(
-        JSON.stringify({ error: 'Failed to save survey data' }),
+        JSON.stringify({ error: 'Failed to process survey data' }),
         { 
           status: 500, 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
@@ -70,8 +68,7 @@ serve(async (req) => {
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: 'Survey submitted successfully',
-        data: data 
+        message: 'Survey submitted successfully'
       }),
       { 
         status: 200, 

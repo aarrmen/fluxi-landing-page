@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -15,9 +14,7 @@ const SurveyForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
     phone: "",
-    business_type: "",
     message: ""
   });
 
@@ -26,9 +23,9 @@ const SurveyForm = () => {
     setLoading(true);
 
     try {
-      const { error } = await supabase
-        .from('surveys')
-        .insert([formData]);
+      const { error } = await supabase.functions.invoke('survey-webhook', {
+        body: formData
+      });
 
       if (error) throw error;
 
@@ -41,9 +38,7 @@ const SurveyForm = () => {
       setFormData({
         name: "",
         email: "",
-        company: "",
         phone: "",
-        business_type: "",
         message: ""
       });
     } catch (error) {
@@ -88,7 +83,7 @@ const SurveyForm = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
+                  <Label htmlFor="email">Correo electrónico *</Label>
                   <Input
                     id="email"
                     type="email"
@@ -100,48 +95,20 @@ const SurveyForm = () => {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="company">Empresa/Negocio</Label>
-                  <Input
-                    id="company"
-                    type="text"
-                    value={formData.company}
-                    onChange={(e) => handleChange("company", e.target.value)}
-                    className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Teléfono</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => handleChange("phone", e.target.value)}
-                    className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
-                  />
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="phone">Número de teléfono *</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => handleChange("phone", e.target.value)}
+                  required
+                  className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
+                />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="business_type">Tipo de negocio</Label>
-                <Select value={formData.business_type} onValueChange={(value) => handleChange("business_type", value)}>
-                  <SelectTrigger className="transition-all duration-200 focus:ring-2 focus:ring-primary/20">
-                    <SelectValue placeholder="Selecciona tu tipo de negocio" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="freelancer">Freelancer/Autónomo</SelectItem>
-                    <SelectItem value="startup">Startup</SelectItem>
-                    <SelectItem value="pyme">PYME</SelectItem>
-                    <SelectItem value="agencia">Agencia</SelectItem>
-                    <SelectItem value="consultor">Consultor</SelectItem>
-                    <SelectItem value="otro">Otro</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message">¿Cómo planeas usar Fluxi?</Label>
+                <Label htmlFor="message">Comentario</Label>
                 <Textarea
                   id="message"
                   value={formData.message}
