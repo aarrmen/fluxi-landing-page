@@ -41,7 +41,7 @@ const Header = () => {
             <Button 
               variant="cta" 
               size="sm"
-              onClick={() => window.open('https://bitotxe.app.n8n.cloud/form/3064a028-1c8b-495b-bbf8-4663184a8bf6', '_blank')}
+              onClick={() => document.getElementById('survey')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Prueba Gratis
             </Button>
@@ -81,7 +81,10 @@ const Header = () => {
                   variant="cta" 
                   size="sm" 
                   className="w-full"
-                  onClick={() => window.open('https://bitotxe.app.n8n.cloud/form/3064a028-1c8b-495b-bbf8-4663184a8bf6', '_blank')}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    document.getElementById('survey')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
                   Prueba Gratis
                 </Button>

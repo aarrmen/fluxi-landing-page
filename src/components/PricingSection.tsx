@@ -91,7 +91,7 @@ const PricingSection = () => {
                 variant={plan.variant} 
                 size="lg" 
                 className="w-full"
-                onClick={() => window.open('https://bitotxe.app.n8n.cloud/form/3064a028-1c8b-495b-bbf8-4663184a8bf6', '_blank')}
+                onClick={() => document.getElementById('survey')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {plan.cta}
               </Button>

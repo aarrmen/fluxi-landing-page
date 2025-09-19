@@ -5,6 +5,7 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import UseCasesSection from "@/components/UseCasesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import PricingSection from "@/components/PricingSection";
+import SurveyForm from "@/components/SurveyForm";
 import FinalCtaSection from "@/components/FinalCtaSection";
 import Footer from "@/components/Footer";
 
@@ -25,6 +26,7 @@ const Index = () => {
         <section id="pricing">
           <PricingSection />
         </section>
+        <SurveyForm />
         <FinalCtaSection />
       </main>
       <Footer />

@@ -31,7 +31,7 @@ const HeroSection = () => {
                   variant="cta" 
                   size="xl" 
                   className="min-w-[200px]"
-                  onClick={() => window.open('https://bitotxe.app.n8n.cloud/form/3064a028-1c8b-495b-bbf8-4663184a8bf6', '_blank')}
+                  onClick={() => document.getElementById('survey')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   Prueba Fluxi Gratis
                 </Button>
