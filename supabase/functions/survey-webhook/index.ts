@@ -46,7 +46,7 @@ serve(async (req) => {
     };
 
     // Send to n8n webhook
-    const webhookResponse = await fetch('https://bitotxe.app.n8n.cloud/webhook-test/bbc61550-c20e-4f58-b123-37f0cf075749', {
+    const webhookResponse = await fetch('https://bitotxe.app.n8n.cloud/webhook/bbc61550-c20e-4f58-b123-37f0cf075749', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
