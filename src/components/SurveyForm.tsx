@@ -57,20 +57,20 @@ const SurveyForm = () => {
   };
 
   return (
-    <section id="survey" className="py-24 px-4 bg-muted/30">
+    <section id="survey" className="py-16 sm:py-20 lg:py-24 px-4 bg-muted/30">
       <div className="container mx-auto max-w-2xl">
         <Card className="shadow-medium">
-          <CardHeader className="text-center">
-            <CardTitle className="text-3xl font-bold">
+          <CardHeader className="text-center px-4 sm:px-6">
+            <CardTitle className="text-2xl sm:text-3xl font-bold">
               Comienza con <span className="text-primary">Fluxi</span>
             </CardTitle>
-            <CardDescription className="text-lg">
+            <CardDescription className="text-base sm:text-lg leading-relaxed">
               Cuéntanos sobre tu negocio y te ayudaremos a automatizar tu prospección
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+          <CardContent className="px-4 sm:px-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Nombre completo *</Label>
                   <Input

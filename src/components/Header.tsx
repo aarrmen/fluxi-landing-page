@@ -65,22 +65,22 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border/50">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-sm border-t border-border/50">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-muted-foreground hover:text-foreground transition-colors font-medium"
+                  className="block px-4 py-3 text-muted-foreground hover:text-foreground transition-colors font-medium rounded-lg hover:bg-muted/50"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <div className="px-3 py-4 space-y-2">
+              <div className="px-4 py-4 space-y-2">
                 <Button 
                   variant="cta" 
-                  size="sm" 
-                  className="w-full"
+                  size="default" 
+                  className="w-full font-semibold"
                   onClick={() => {
                     setIsMenuOpen(false);
                     document.getElementById('survey')?.scrollIntoView({ behavior: 'smooth' });
