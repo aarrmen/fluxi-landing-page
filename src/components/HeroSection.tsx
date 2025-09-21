@@ -4,7 +4,7 @@ import heroImage from "@/assets/hero-dashboard.jpg";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 sm:py-20 bg-background overflow-hidden">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-7xl w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Content */}
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
@@ -55,17 +55,17 @@ const HeroSection = () => {
                 className="w-full h-auto rounded-xl sm:rounded-2xl shadow-strong"
               />
             </div>
-            {/* Decorative elements - smaller on mobile */}
-            <div className="absolute -top-4 -right-4 sm:-top-8 sm:-right-8 w-16 h-16 sm:w-32 sm:h-32 bg-gradient-hero rounded-full opacity-20 blur-2xl"></div>
-            <div className="absolute -bottom-4 -left-4 sm:-bottom-8 sm:-left-8 w-20 h-20 sm:w-40 sm:h-40 bg-gradient-cta rounded-full opacity-15 blur-2xl"></div>
+            {/* Decorative elements - contained within viewport */}
+            <div className="absolute top-0 right-0 w-16 h-16 sm:w-32 sm:h-32 bg-gradient-hero rounded-full opacity-20 blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-20 h-20 sm:w-40 sm:h-40 bg-gradient-cta rounded-full opacity-15 blur-2xl"></div>
           </div>
         </div>
       </div>
       
-      {/* Background decoration */}
+      {/* Background decoration - contained */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-success/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-64 sm:h-64 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 sm:w-80 sm:h-80 bg-success/5 rounded-full blur-3xl"></div>
       </div>
     </section>
   );

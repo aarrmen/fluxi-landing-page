@@ -57,8 +57,8 @@ const SurveyForm = () => {
   };
 
   return (
-    <section id="survey" className="py-16 sm:py-20 lg:py-24 px-4 bg-muted/30">
-      <div className="container mx-auto max-w-2xl">
+    <section id="survey" className="py-16 sm:py-20 lg:py-24 px-4 bg-muted/30 overflow-hidden">
+      <div className="container mx-auto max-w-2xl w-full">
         <Card className="shadow-medium">
           <CardHeader className="text-center px-4 sm:px-6">
             <CardTitle className="text-2xl sm:text-3xl font-bold">

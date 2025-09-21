@@ -20,8 +20,8 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-4 bg-muted/30">
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-16 sm:py-20 lg:py-24 px-4 bg-muted/30 overflow-hidden">
+      <div className="container mx-auto max-w-6xl w-full">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
             ¿Por qué elegir <span className="text-primary">Fluxi</span>?

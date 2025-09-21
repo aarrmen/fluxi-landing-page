@@ -13,7 +13,7 @@ const Index = () => {
   return (
     <>
       <Header />
-      <main className="pt-16">
+      <main className="pt-16 overflow-x-hidden w-full">
         <section id="hero">
           <HeroSection />
         </section>
