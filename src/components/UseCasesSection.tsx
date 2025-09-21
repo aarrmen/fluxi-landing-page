@@ -50,7 +50,7 @@ const UseCasesSection = () => {
           ))}
         </div>
         
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 hidden sm:block">
           <p className="text-lg text-muted-foreground mb-6">
             ¿Tu caso es diferente? Fluxi se adapta a cualquier sector comercial
           </p>
